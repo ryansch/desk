@@ -33,7 +33,7 @@ There are no dependencies other than `bash`. Desk is explicitly tested with `bas
 `zsh`, and `fish`.
 
 ```sh
-◲  desk 0.6.0
+◲  desk 0.7.0
 
 Usage:
 
@@ -48,8 +48,16 @@ Usage:
         Activate a desk. Extra arguments are passed onto shell. If called with
         no arguments, look for a Deskfile in the current directory. If not a
         recognized desk, try as a path to directory containing a Deskfile.
-    desk run <desk-name> <cmd>
-        Run a command within a desk's environment then exit. Think '$SHELL -c'.
+    desk load [<desk-name-or-path>]
+        Display the commands needed to load a desk into the current shell.  If
+        called with no arguments, look for a Deskfile in the current directory.
+        If not a recognized desk, try as a path to directory containing a
+        Deskfile. Normal usage: eval $(desk load <name>)
+    desk run <desk-name> '<cmd>'
+    desk run <desk-name> <cmd> <arg>...
+        Run a command within a desk's environment then exit. In the first form
+        shell expansion is performed. In the second form, the argument vector
+        is executed as is.
     desk edit [desk-name]
         Edit (or create) a deskfile with the name specified, otherwise
         edit the active deskfile.
